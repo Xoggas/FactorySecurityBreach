@@ -51,6 +51,11 @@ namespace MelonJam4.Factory
                 enabled = false;
                 return;
             }
+            
+            if (Level.Instance.IsGameRunning == false)
+            {
+                return;
+            }
 
             Transform();
             UpdatePoint();

@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MelonJam4.Factory
 {
     public sealed class Player : Robot
     {
+        public event Action<float, float> OnCompromiseTimerUpdate;
+        public event Action OnCompromised;
+
         [Header("Player Properties")]
         [SerializeField]
         private float _movementSpeed = 5f;
@@ -14,12 +18,23 @@ namespace MelonJam4.Factory
         [SerializeField]
         private float _timeLimit = 2f;
 
+        #region RuntimeVariables
+
         private float _compromisedTimer;
         private bool _isInStealthMode;
         private bool _isBeingCompromised;
 
+        #endregion
+
+        #region Unity
+
         private void Update()
         {
+            if (Level.Instance.IsGameRunning == false)
+            {
+                return;
+            }
+
             Transform();
             UpdateCompromisedTimer();
         }
@@ -47,6 +62,8 @@ namespace MelonJam4.Factory
                 _isBeingCompromised = false;
             }
         }
+
+        #endregion
 
         private Vector3 GetInputVector()
         {
@@ -90,10 +107,12 @@ namespace MelonJam4.Factory
             {
                 _compromisedTimer = 0f;
             }
+            
+            OnCompromiseTimerUpdate?.Invoke(_compromisedTimer, _timeLimit);
 
             if (_compromisedTimer >= _timeLimit)
             {
-                
+                OnCompromised?.Invoke();
             }
         }
     }
