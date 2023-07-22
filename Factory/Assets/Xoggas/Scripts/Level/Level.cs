@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace MelonJam4.Factory
 {
     public sealed class Level : MonoBehaviour
     {
+        [SerializeField]
+        private PausePopup _pausePopup;
+
+        [SerializeField]
+        private GameOverPopup _gameOverPopup;
+
         [SerializeField]
         private Player _player;
 
@@ -22,33 +29,39 @@ namespace MelonJam4.Factory
 
         private void Awake()
         {
+            if (_pausePopup == false || _gameOverPopup == false || _player == false)
+            {
+                enabled = false;
+                throw new Exception($"Missing components in {nameof(Level)} script!");
+            }
+
             Instance = this;
             _sceneId = SceneManager.GetActiveScene().buildIndex;
             _player.OnCompromised += OnGameOver;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Restart();
-            }
+            _pausePopup.OnOpen += OnGamePause;
+            _pausePopup.OnClose += OnGameResume;
+            _pausePopup.OnQuitPressed += Quit;
+            _gameOverPopup.OnRestartPressed += Restart;
+            _gameOverPopup.OnQuitPressed += Quit;
         }
 
         private void OnDestroy()
         {
             Instance = null;
             _player.OnCompromised -= OnGameOver;
+            _pausePopup.OnQuitPressed -= Quit;
+            _pausePopup.OnOpen -= OnGamePause;
+            _pausePopup.OnClose -= OnGameResume;
+            _gameOverPopup.OnRestartPressed -= Restart;
+            _gameOverPopup.OnQuitPressed -= Quit;
         }
 
-        private void OnEnable()
+        private void Update()
         {
-            _player.OnCompromised += OnGameOver;
-        }
-
-        private void OnDisable()
-        {
-            _player.OnCompromised -= OnGameOver;
+            if (Input.GetKeyDown(KeyCode.Escape) && IsGameRunning && !_pausePopup.IsOpened)
+            {
+                _pausePopup.Open();   
+            }
         }
 
         #endregion
@@ -58,7 +71,7 @@ namespace MelonJam4.Factory
             MySceneManager.LoadScene(_sceneId);
         }
 
-        private void OnQuit()
+        private void Quit()
         {
             MySceneManager.LoadScene(0);
         }
@@ -76,6 +89,7 @@ namespace MelonJam4.Factory
         private void OnGameOver()
         {
             IsGameRunning = false;
+            _gameOverPopup.Open();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MelonJam4.Factory
         {
             if (Level.Instance.IsGameRunning == false)
             {
+                StopPlayer();
                 return;
             }
 
@@ -85,7 +86,7 @@ namespace MelonJam4.Factory
 
             if (input.magnitude <= 0.00001f)
             {
-                _rigidbody.velocity = Vector3.zero;
+                StopPlayer();
                 return;
             }
 
@@ -122,6 +123,11 @@ namespace MelonJam4.Factory
             {
                 OnCompromised?.Invoke();
             }
+        }
+
+        private void StopPlayer()
+        {
+            _rigidbody.velocity = Vector3.zero;
         }
     }
 }
