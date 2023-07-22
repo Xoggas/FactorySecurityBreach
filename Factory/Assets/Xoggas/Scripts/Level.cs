@@ -27,6 +27,14 @@ namespace MelonJam4.Factory
             _player.OnCompromised += OnGameOver;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Restart();
+            }
+        }
+
         private void OnDestroy()
         {
             Instance = null;
@@ -48,13 +56,13 @@ namespace MelonJam4.Factory
         private void Restart()
         {
             //Transition manager - fade in
-            SceneManager.LoadScene(_sceneId);
+            MySceneManager.LoadScene(_sceneId);
         }
 
         private void OnQuit()
         {
             //Transition manager - fade in
-            SceneManager.LoadScene(0);
+            MySceneManager.LoadScene(0);
         }
 
         private void OnGamePause()

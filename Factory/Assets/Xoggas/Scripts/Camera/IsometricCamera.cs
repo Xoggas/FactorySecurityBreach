@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MelonJam4.Factory
 {
@@ -10,7 +11,11 @@ namespace MelonJam4.Factory
         private Transform _container;
 
         [SerializeField]
-        private Transform _camera;
+        private Camera _camera;
+
+        [FormerlySerializedAs("_camera")]
+        [SerializeField]
+        private Transform _cameraTransform;
 
         [SerializeField]
         private Transform _target;
@@ -30,12 +35,13 @@ namespace MelonJam4.Factory
 
         private void LateUpdate()
         {
-            if (_container == false || _camera == false || _target == false)
+            if (_container == false || _cameraTransform == false || _target == false)
             {
                 return;
             }
 
-            _camera.localPosition = new Vector3(0, 0, -_distance);
+            _camera.orthographicSize = _distance;
+            _cameraTransform.localPosition = new Vector3(0, 0, -_distance);
             _container.localEulerAngles = new Vector3(_angle, _angle + _rotation, 0);
             _container.position = _target.position + Vector3.up * _heightOffset;
         }
