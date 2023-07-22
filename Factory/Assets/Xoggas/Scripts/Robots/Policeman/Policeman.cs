@@ -15,6 +15,9 @@ namespace MelonJam4.Factory
         [SerializeField]
         private float _dangerZoneRadius = 1f;
 
+        [SerializeField]
+        private Transform _dangerZoneView;
+
         [Header("Movement Properties")]
         [SerializeField]
         private PathPoint[] _points;
@@ -51,7 +54,7 @@ namespace MelonJam4.Factory
                 enabled = false;
                 return;
             }
-            
+
             if (Level.Instance.IsGameRunning == false)
             {
                 return;
@@ -138,6 +141,7 @@ namespace MelonJam4.Factory
         private void UpdateDangerZone()
         {
             _collider.radius = _dangerZoneRadius;
+            _dangerZoneView.localScale = new Vector3(_dangerZoneRadius * 2, _dangerZoneRadius * 2, 1);
         }
     }
 }
