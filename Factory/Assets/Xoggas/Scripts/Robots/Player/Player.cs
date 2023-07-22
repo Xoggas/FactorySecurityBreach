@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MelonJam4.Factory
 {
+    [RequireComponent(typeof(Rigidbody))]
     public sealed class Player : Robot
     {
         public event Action<float, float> OnCompromiseTimerUpdate;
@@ -20,6 +21,7 @@ namespace MelonJam4.Factory
 
         #region RuntimeVariables
 
+        private Rigidbody _rigidbody;
         private float _compromisedTimer;
         private bool _isInStealthMode;
         private bool _isBeingCompromised;
@@ -27,6 +29,11 @@ namespace MelonJam4.Factory
         #endregion
 
         #region Unity
+
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
         private void Update()
         {
@@ -78,10 +85,11 @@ namespace MelonJam4.Factory
 
             if (input.magnitude <= 0.00001f)
             {
+                _rigidbody.velocity = Vector3.zero;
                 return;
             }
 
-            transform.localPosition += input * Time.deltaTime * _movementSpeed;
+            _rigidbody.velocity = input * _movementSpeed;
 
             var rotation = Quaternion.LookRotation(input, Vector3.up);
 
@@ -107,7 +115,7 @@ namespace MelonJam4.Factory
             {
                 _compromisedTimer = 0f;
             }
-            
+
             OnCompromiseTimerUpdate?.Invoke(_compromisedTimer, _timeLimit);
 
             if (_compromisedTimer >= _timeLimit)

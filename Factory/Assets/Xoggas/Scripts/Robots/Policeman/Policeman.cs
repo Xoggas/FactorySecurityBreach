@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MelonJam4.Factory
 {
-    [RequireComponent(typeof(SphereCollider))]
     public sealed class Policeman : Robot
     {
         [Header("Robot Properties")]
@@ -18,15 +18,13 @@ namespace MelonJam4.Factory
         [SerializeField]
         private Transform _dangerZoneView;
 
+        [FormerlySerializedAs("_collider")]
+        [SerializeField]
+        private SphereCollider _dangerZoneCollider;
+        
         [Header("Movement Properties")]
         [SerializeField]
         private PathPoint[] _points;
-
-        #region Components
-
-        private SphereCollider _collider;
-
-        #endregion
 
         #region RuntimeProperties
 
@@ -40,7 +38,6 @@ namespace MelonJam4.Factory
 
         private void Awake()
         {
-            _collider = GetComponent<SphereCollider>();
             _direction = 1;
             _startPoint = 0;
             _endPoint = 1;
@@ -140,7 +137,7 @@ namespace MelonJam4.Factory
 
         private void UpdateDangerZone()
         {
-            _collider.radius = _dangerZoneRadius;
+            _dangerZoneCollider.radius = _dangerZoneRadius;
             _dangerZoneView.localScale = new Vector3(_dangerZoneRadius * 2, _dangerZoneRadius * 2, 1);
         }
     }

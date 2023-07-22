@@ -55,13 +55,11 @@ namespace MelonJam4.Factory
 
         private void Restart()
         {
-            //Transition manager - fade in
             MySceneManager.LoadScene(_sceneId);
         }
 
         private void OnQuit()
         {
-            //Transition manager - fade in
             MySceneManager.LoadScene(0);
         }
 
