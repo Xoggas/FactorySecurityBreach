@@ -46,15 +46,19 @@ namespace MelonJam4.Factory
         private float _badPrecision;
 
         [SerializeField]
+        private Color _normalColor;
+
+        [SerializeField]
         private Color _okColor;
 
         [SerializeField]
         private Color _wrongColor;
-        
+
         #region RuntimeVariables
 
         private bool _isSmashed;
         private bool _isInZone;
+        private Color _targetColor;
 
         #endregion
 
@@ -62,12 +66,8 @@ namespace MelonJam4.Factory
 
         private void Awake()
         {
+            _targetColor = _normalColor;
             UpdateVisibility();
-        }
-
-        private void Start()
-        {
-            _renderer.material.color = IsWrong ? _wrongColor : _okColor;
         }
 
         private void Update()
@@ -75,12 +75,19 @@ namespace MelonJam4.Factory
             UpdateVisibility();
             UpdatePosition();
             ListenForInput();
+            UpdateColor();
+        }
+
+        private void UpdateColor()
+        {
+            _renderer.material.color = _targetColor;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<MiniGame>(out _))
             {
+                _targetColor = IsWrong ? _wrongColor : _okColor;
                 _isInZone = true;
             }
         }
@@ -89,6 +96,7 @@ namespace MelonJam4.Factory
         {
             if (other.TryGetComponent<MiniGame>(out _))
             {
+                _targetColor = _normalColor;
                 _isInZone = false;
             }
 
@@ -138,31 +146,34 @@ namespace MelonJam4.Factory
             if (IsWrong || precision > _badPrecision)
             {
                 OnHit(HitType.Miss);
+                UpdateMesh();
             }
             else if (precision <= _perfectPrecision)
             {
                 OnHit(HitType.Perfect);
+                UpdateMesh();
             }
             else if (precision <= _goodPrecision)
             {
                 OnHit(HitType.Good);
+                UpdateMesh();
             }
             else if (precision <= _badPrecision)
             {
                 OnHit(HitType.Bad);
+                UpdateMesh();
             }
         }
 
         private void OnHit(HitType type)
         {
             _isSmashed = true;
-
-            if (type != HitType.Miss)
-            {
-                _filter.mesh = _crashedMesh;
-            }
-
             HitView.Instance.OnHit(type);
+        }
+
+        private void UpdateMesh()
+        {
+            _filter.mesh = _crashedMesh;
         }
     }
 }

@@ -60,8 +60,9 @@ MonoBehaviour:
   _perfectPrecision: 0.05
   _goodPrecision: 0.1
   _badPrecision: 0.15
-  _okColor: {r: 0.90588236, g: 0.73333335, b: 0.5764706, a: 1}
-  _wrongColor: {r: 0.9433962, g: 0.31594875, b: 0.31594875, a: 1}
+  _normalColor: {r: 0.90588236, g: 0.73333335, b: 0.5764706, a: 1}
+  _okColor: {r: 0.90588236, g: 0.5797647, b: 0.58752936, a: 1}
+  _wrongColor: {r: 0.90588236, g: 0.73333335, b: 0.5764706, a: 1}
 --- !u!65 &-4448744471587430674
 BoxCollider:
   m_ObjectHideFlags: 0
