@@ -21,6 +21,8 @@ namespace MelonJam4.Factory
 
         #region RuntimeVariables
 
+        public static Player Instance { get; private set; }
+
         private Rigidbody _rigidbody;
         private float _compromisedTimer;
         private bool _isInStealthMode;
@@ -32,6 +34,7 @@ namespace MelonJam4.Factory
 
         private void Awake()
         {
+            Instance = this;
             _rigidbody = GetComponent<Rigidbody>();
         }
 
@@ -69,6 +72,11 @@ namespace MelonJam4.Factory
             {
                 _isBeingCompromised = false;
             }
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
         }
 
         #endregion

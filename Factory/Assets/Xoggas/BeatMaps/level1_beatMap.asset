@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c5bb8c33d8ffa428dcc7bbf29d7833, type: 3}
+  m_Name: level1_beatMap
+  m_EditorClassIdentifier: 
+  Track: {fileID: 8300000, guid: 0e152babdad210546bad4324a1ea2de3, type: 3}
+  TrackName: Neon Gaming
+  Duration: 1:40
+  Bpm: 50
+  Offset: 0.755
+  Beats:
+  - Time: 0.755
+    IsWrong: 0
+  - Time: 1.955
+    IsWrong: 0
+  - Time: 3.1550002
+    IsWrong: 0
+  - Time: 4.3550005
+    IsWrong: 0
+  - Time: 5.5550003
+    IsWrong: 0
+  - Time: 6.755
+    IsWrong: 0
+  - Time: 7.955
+    IsWrong: 0
+  - Time: 9.155
+    IsWrong: 0
+  - Time: 10.355
+    IsWrong: 0
+  - Time: 11.554999
+    IsWrong: 0
+  - Time: 12.754999
+    IsWrong: 0
+  - Time: 13.954999
+    IsWrong: 0
+  - Time: 15.154999
+    IsWrong: 0
+  - Time: 16.355
+    IsWrong: 0
+  - Time: 17.555
+    IsWrong: 0
+  - Time: 18.755001
+    IsWrong: 0
+  - Time: 19.955002
+    IsWrong: 1
+  - Time: 21.155003
+    IsWrong: 1
+  - Time: 22.355003
+    IsWrong: 1
+  - Time: 23.555004
+    IsWrong: 1
+  - Time: 24.755005
+    IsWrong: 1
+  - Time: 25.955006
+    IsWrong: 1
+  - Time: 27.155006
+    IsWrong: 1
+  - Time: 28.355007
+    IsWrong: 1
+  - Time: 29.555008
+    IsWrong: 0
+  - Time: 30.755009
+    IsWrong: 0
+  - Time: 31.95501
+    IsWrong: 0
+  - Time: 33.15501
+    IsWrong: 0
+  - Time: 34.35501
+    IsWrong: 0
+  - Time: 35.55501
+    IsWrong: 0
+  - Time: 36.755013
+    IsWrong: 0
+  - Time: 37.955013
+    IsWrong: 1
+  - Time: 39.155014
+    IsWrong: 0
+  - Time: 40.355015
+    IsWrong: 0
+  - Time: 41.555016
+    IsWrong: 0
+  - Time: 42.755016
+    IsWrong: 0
+  - Time: 43.955017
+    IsWrong: 0
+  - Time: 45.155018
+    IsWrong: 0
+  - Time: 46.35502
+    IsWrong: 0
+  - Time: 47.55502
+    IsWrong: 1
+  - Time: 48.75502
+    IsWrong: 0
+  - Time: 49.95502
+    IsWrong: 0
+  - Time: 51.15502
+    IsWrong: 0
+  - Time: 52.355022
+    IsWrong: 0
+  - Time: 53.555023
+    IsWrong: 0
+  - Time: 54.755024
+    IsWrong: 0
+  - Time: 55.955025
+    IsWrong: 0
+  - Time: 57.155025
+    IsWrong: 1
+  - Time: 58.355026
+    IsWrong: 0
+  - Time: 59.555027
+    IsWrong: 0
+  - Time: 60.755028
+    IsWrong: 0
+  - Time: 61.95503
+    IsWrong: 0
+  - Time: 63.15503
+    IsWrong: 0
+  - Time: 64.35503
+    IsWrong: 0
+  - Time: 65.55502
+    IsWrong: 0
+  - Time: 66.75502
+    IsWrong: 1
+  - Time: 67.95502
+    IsWrong: 0
+  - Time: 69.155014
+    IsWrong: 0
+  - Time: 70.35501
+    IsWrong: 0
+  - Time: 71.55501
+    IsWrong: 0
+  - Time: 72.755005
+    IsWrong: 0
+  - Time: 73.955
+    IsWrong: 0
+  - Time: 75.155
+    IsWrong: 0
+  - Time: 76.354996
+    IsWrong: 0
+  - Time: 77.55499
+    IsWrong: 0
+  - Time: 78.75499
+    IsWrong: 0
+  - Time: 79.95499
+    IsWrong: 0
+  - Time: 81.15498
+    IsWrong: 0
+  - Time: 82.35498
+    IsWrong: 0
+  - Time: 83.55498
+    IsWrong: 0
+  - Time: 84.754974
+    IsWrong: 0
+  - Time: 85.95497
+    IsWrong: 1
+  - Time: 87.15497
+    IsWrong: 0
+  - Time: 88.354965
+    IsWrong: 0
+  - Time: 89.55496
+    IsWrong: 0
+  - Time: 90.75496
+    IsWrong: 0
+  - Time: 91.954956
+    IsWrong: 0
+  - Time: 93.15495
+    IsWrong: 0
+  - Time: 94.35495
+    IsWrong: 0
+  - Time: 95.55495
+    IsWrong: 0
+  - Time: 96.754944
+    IsWrong: 1
+  - Time: 97.95494
+    IsWrong: 1
+  - Time: 99.15494
+    IsWrong: 1
+  - Time: 100.354935
+    IsWrong: 1

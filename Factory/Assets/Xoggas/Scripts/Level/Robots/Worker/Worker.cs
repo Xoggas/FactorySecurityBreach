@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MelonJam4.Factory.Worker
+namespace MelonJam4.Factory
 {
     [RequireComponent(typeof(SphereCollider))]
     public sealed class Worker : Robot

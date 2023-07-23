@@ -18,12 +18,9 @@ namespace MelonJam4.Factory
         private Transform _cameraTransform;
 
         [SerializeField]
-        private Transform _target;
+        private CameraTarget _target;
 
         [Header("Camera Settings")]
-        [SerializeField]
-        private float _distance;
-
         [SerializeField]
         private float _angle;
 
@@ -40,24 +37,15 @@ namespace MelonJam4.Factory
                 return;
             }
 
-            var targetPosition = _target.position + Vector3.up * _heightOffset;
+            var targetPosition = _target.transform.position + Vector3.up * _heightOffset;
             
             if(Vector3.Distance(_container.position, targetPosition) >= 0.01f)
             {
                 _container.position = targetPosition;
             }
 
-            _camera.orthographicSize = _distance;
-            _cameraTransform.localPosition = new Vector3(0, 0, -_distance);
+            _camera.orthographicSize = _target.Zoom;
             _container.localEulerAngles = new Vector3(_angle, _angle + _rotation, 0);
-        }
-
-        private void OnValidate()
-        {
-            if (_distance < 0)
-            {
-                _distance = 0;
-            }
         }
     }
 }

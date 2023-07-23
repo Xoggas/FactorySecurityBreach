@@ -15,6 +15,9 @@ namespace MelonJam4.Factory
         [SerializeField]
         private Player _player;
 
+        [SerializeField]
+        private MiniGame _miniGame;
+
         #region RuntimeVariables
 
         public static Level Instance { get; private set; }
@@ -38,8 +41,8 @@ namespace MelonJam4.Factory
             Instance = this;
             _sceneId = SceneManager.GetActiveScene().buildIndex;
             _player.OnCompromised += OnGameOver;
-            _pausePopup.OnOpen += OnGamePause;
-            _pausePopup.OnClose += OnGameResume;
+            _pausePopup.OnOpen += Lock;
+            _pausePopup.OnClose += Unlock;
             _pausePopup.OnQuitPressed += Quit;
             _gameOverPopup.OnRestartPressed += Restart;
             _gameOverPopup.OnQuitPressed += Quit;
@@ -50,8 +53,8 @@ namespace MelonJam4.Factory
             Instance = null;
             _player.OnCompromised -= OnGameOver;
             _pausePopup.OnQuitPressed -= Quit;
-            _pausePopup.OnOpen -= OnGamePause;
-            _pausePopup.OnClose -= OnGameResume;
+            _pausePopup.OnOpen -= Lock;
+            _pausePopup.OnClose -= Unlock;
             _gameOverPopup.OnRestartPressed -= Restart;
             _gameOverPopup.OnQuitPressed -= Quit;
         }
@@ -66,6 +69,16 @@ namespace MelonJam4.Factory
 
         #endregion
 
+        public void Lock()
+        {
+            IsGameRunning = false;
+        }
+
+        public void Unlock()
+        {
+            IsGameRunning = true;
+        }
+        
         private void Restart()
         {
             MySceneManager.LoadScene(_sceneId);
@@ -74,16 +87,6 @@ namespace MelonJam4.Factory
         private void Quit()
         {
             MySceneManager.LoadScene(0);
-        }
-
-        private void OnGamePause()
-        {
-            IsGameRunning = false;
-        }
-
-        private void OnGameResume()
-        {
-            IsGameRunning = true;
         }
 
         private void OnGameOver()
