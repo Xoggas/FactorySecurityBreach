@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 1106209449}
   - component: {fileID: 1106209448}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 462dc22fc1c9c8840846056f90bb4118, type: 2}
+  - {fileID: 2100000, guid: 21ca8723c11d2d34abf1e9e595b0942a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -556,6 +556,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419347092434796184, guid: c5a8e31e6fd11934d9efc839a1d7a9b8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a7ca585a9b2b3c4587125916713263d, type: 2}
     - target: {fileID: 4158282313740615179, guid: c5a8e31e6fd11934d9efc839a1d7a9b8,
         type: 3}
       propertyPath: m_Enabled
@@ -665,6 +670,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227084311909341031, guid: 43d5cc7d0cdb1354e95f9ba567609703,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efe26027cacc84b409062a6cff9b90c4, type: 2}
     - target: {fileID: 5861011863024279573, guid: 43d5cc7d0cdb1354e95f9ba567609703,
         type: 3}
       propertyPath: m_RootOrder
@@ -1166,11 +1176,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6385881620714735985, guid: 8b8b47a2c01ec8d409dd8984cc4bc0b0,
         type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6385881620714735985, guid: 8b8b47a2c01ec8d409dd8984cc4bc0b0,
-        type: 3}
       propertyPath: orthographic size
       value: 50
       objectReference: {fileID: 0}
@@ -1263,6 +1268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3195196861884907616, guid: 172cfd49457f1a04d895168e1078b738,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6af20d21fdb3e9846be9fcc5368045e6, type: 2}
     - target: {fileID: 8431957526778499855, guid: 172cfd49457f1a04d895168e1078b738,
         type: 3}
       propertyPath: m_RootOrder

@@ -40,10 +40,16 @@ namespace MelonJam4.Factory
                 return;
             }
 
+            var targetPosition = _target.position + Vector3.up * _heightOffset;
+            
+            if(Vector3.Distance(_container.position, targetPosition) >= 0.01f)
+            {
+                _container.position = targetPosition;
+            }
+
             _camera.orthographicSize = _distance;
             _cameraTransform.localPosition = new Vector3(0, 0, -_distance);
             _container.localEulerAngles = new Vector3(_angle, _angle + _rotation, 0);
-            _container.position = _target.position + Vector3.up * _heightOffset;
         }
 
         private void OnValidate()
