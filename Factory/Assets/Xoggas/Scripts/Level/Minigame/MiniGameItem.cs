@@ -143,7 +143,7 @@ namespace MelonJam4.Factory
         private void OnHit(HitType type)
         {
             _isSmashed = true;
-            //_filter.mesh = _crashedMesh;
+            _filter.mesh = _crashedMesh;
             HitView.Instance.OnHit(type);
         }
     }

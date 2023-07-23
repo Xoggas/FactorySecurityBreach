@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 1858380542059202112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 72.5, y: 5.55, z: -52.5}
-  m_LocalScale: {x: 5, y: 5, z: 7.5}
+  m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &462696452059427194
 MonoBehaviour:
@@ -50,14 +50,14 @@ MonoBehaviour:
   _targetWorker: {fileID: 0}
   _startPoint: {fileID: 0}
   _endPoint: {fileID: 0}
-  _targetPoint: 0.523
-  _step: 0.36
+  _targetPoint: 0.495
+  _step: 0.27
   _item: {fileID: -7038101575412146728, guid: 5e9fbd7c50a04c746acf6a3593fba846, type: 3}
   _beatMap: {fileID: 11400000, guid: 66af9ad730a5aeb41ab54b296e6dc006, type: 2}
   _camera: {fileID: 0}
   _cameraTarget: {fileID: 0}
   _targetView: {fileID: 0}
-  _targetZoom: 2.5
+  _targetZoom: 3.5
 --- !u!82 &8865343467912523875
 AudioSource:
   m_ObjectHideFlags: 0
