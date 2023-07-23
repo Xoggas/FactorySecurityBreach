@@ -83,10 +83,15 @@ namespace MelonJam4.Factory
             Gizmos.DrawLine(_startPoint.Position, _endPoint.Position);
 
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(Vector3.Lerp(_startPoint.Position, _endPoint.Position, _targetPoint), 2f);
+            Gizmos.DrawSphere(Vector3.Lerp(_startPoint.Position, _endPoint.Position, _targetPoint), 0.25f);
 
             Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(Vector3.LerpUnclamped(_startPoint.Position, _endPoint.Position, _targetPoint - _step), 2f);
+            Gizmos.DrawSphere(Vector3.LerpUnclamped(_startPoint.Position, _endPoint.Position, _targetPoint - _step), 0.25f);
+        }
+
+        private void Update()
+        {
+            _source.volume = GameSettings.MasterVolume;
         }
 
         private void OnDestroy()

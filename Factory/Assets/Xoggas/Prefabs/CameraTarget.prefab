@@ -48,5 +48,5 @@ MonoBehaviour:
   _speed: 0.025
   FollowPlayer: 1
   TargetPosition: {x: 0, y: 0, z: 0}
-  TargetZoom: 50
-  Zoom: 50
+  TargetZoom: 7.5
+  Zoom: 7.5

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace MelonJam4.Factory.MainMenu
 {
+    [RequireComponent(typeof(AudioSource))]
     public sealed class MainMenu : MonoBehaviour
     {
         [SerializeField]
@@ -26,10 +27,17 @@ namespace MelonJam4.Factory.MainMenu
         [SerializeField]
         private OptionsPopup _options;
 
+        #region RuntimeVariables
+
+        private AudioSource _source;
+
+        #endregion
+
         #region Unity
 
         private void Awake()
         {
+            _source = GetComponent<AudioSource>();
             _playButton.onClick.AddListener(OnPlayPressed);
             _optionsButton.onClick.AddListener(OnOptionsPressed);
             _quitButton.onClick.AddListener(OnQuitPressed);
@@ -38,6 +46,8 @@ namespace MelonJam4.Factory.MainMenu
 
         private void Update()
         {
+            _source.volume = GameSettings.MasterVolume;
+            
             if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 MySceneManager.LoadScene(1);

@@ -57,7 +57,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _cameraTarget: {fileID: 0}
   _targetView: {fileID: 0}
-  _targetZoom: 25
+  _targetZoom: 2.5
 --- !u!82 &8865343467912523875
 AudioSource:
   m_ObjectHideFlags: 0

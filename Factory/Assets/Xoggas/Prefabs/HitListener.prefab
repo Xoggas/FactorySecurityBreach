@@ -47,6 +47,6 @@ MonoBehaviour:
   OnHitEvent:
     m_PersistentCalls:
       m_Calls: []
-  _height: 2
+  _height: 0
   _textPrefab: {fileID: 465361209296476466, guid: e889e6a88a1b0c5468692e5e9012ec55,
     type: 3}
