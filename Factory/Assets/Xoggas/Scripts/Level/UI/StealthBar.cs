@@ -55,7 +55,7 @@ namespace MelonJam4.Factory
 
         private void UpdateColor(Image image, float progress)
         {
-            image.color = _gradient.Evaluate(progress);
+            image.color = _gradient.Evaluate(Mathf.Clamp01(progress));
         }
     }
 }
