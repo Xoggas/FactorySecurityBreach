@@ -46,6 +46,8 @@ namespace MelonJam4.Factory
 
         #region RuntimeVariables
 
+        public static bool IsRunning { get; private set; }
+        
         private AudioSource _source;
         private float _lastZoom;
 
@@ -91,6 +93,7 @@ namespace MelonJam4.Factory
 
         private void Update()
         {
+            IsRunning = _source.isPlaying;
             _source.volume = GameSettings.MasterVolume;
         }
 
@@ -111,8 +114,8 @@ namespace MelonJam4.Factory
             yield return new WaitWhile(() => _source.isPlaying);
 
             SwitchCameraBack();
-            OnMiniGameEnd?.Invoke();
-
+            MySceneManager.LoadScene(3);
+            
             yield return new WaitForSeconds(0.2f);
 
             Level.Instance.Unlock();
@@ -163,7 +166,7 @@ namespace MelonJam4.Factory
                 item.Source = _source;
                 item.Step = step;
                 item.Target = targetPoint;
-                item.Start = _startPoint.Position;
+                item.StartPos = _startPoint.Position;
                 item.End = _endPoint.Position;
                 item.CurrentBeat = _beatMap.Beats[i].Time;
                 item.IsWrong = _beatMap.Beats[i].IsWrong;

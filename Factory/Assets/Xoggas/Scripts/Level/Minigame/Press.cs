@@ -2,6 +2,7 @@
 
 namespace MelonJam4.Factory
 {
+    [RequireComponent(typeof(AudioSource))]
     public sealed class Press : MonoBehaviour
     {
         [SerializeField]
@@ -10,9 +11,20 @@ namespace MelonJam4.Factory
         [SerializeField]
         private AnimationClip _clip;
 
-        public void Shoot()
+        private AudioSource _source;
+
+        private void Awake()
         {
-            _animation.Play(_clip.name);
+            _source = GetComponent<AudioSource>();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && MiniGame.IsRunning)
+            {
+                _animation.Play(_clip.name);
+                //_source.Play();
+            }
         }
     }
 }

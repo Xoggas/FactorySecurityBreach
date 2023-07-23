@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MelonJam4.Factory
 {
@@ -13,8 +14,9 @@ namespace MelonJam4.Factory
         [HideInInspector]
         public float CurrentBeat;
 
+        [FormerlySerializedAs("Start")]
         [HideInInspector]
-        public Vector3 Start;
+        public Vector3 StartPos;
 
         [HideInInspector]
         public Vector3 End;
@@ -43,6 +45,12 @@ namespace MelonJam4.Factory
         [SerializeField]
         private float _badPrecision;
 
+        [SerializeField]
+        private Color _okColor;
+
+        [SerializeField]
+        private Color _wrongColor;
+        
         #region RuntimeVariables
 
         private bool _isSmashed;
@@ -55,6 +63,11 @@ namespace MelonJam4.Factory
         private void Awake()
         {
             UpdateVisibility();
+        }
+
+        private void Start()
+        {
+            _renderer.material.color = IsWrong ? _wrongColor : _okColor;
         }
 
         private void Update()
@@ -81,7 +94,7 @@ namespace MelonJam4.Factory
 
             if (IsWrong == false && _isSmashed == false)
             {
-                OnHit(HitType.Miss); 
+                OnHit(HitType.Miss);
             }
 
             _isSmashed = true;
@@ -102,7 +115,7 @@ namespace MelonJam4.Factory
 
         private void UpdateVisibility()
         {
-            _renderer.enabled = IsCBetweenAB(Start, End, transform.position);
+            _renderer.enabled = IsCBetweenAB(StartPos, End, transform.position);
         }
 
         private void ListenForInput()
@@ -143,7 +156,12 @@ namespace MelonJam4.Factory
         private void OnHit(HitType type)
         {
             _isSmashed = true;
-            _filter.mesh = _crashedMesh;
+
+            if (type != HitType.Miss)
+            {
+                _filter.mesh = _crashedMesh;
+            }
+
             HitView.Instance.OnHit(type);
         }
     }
